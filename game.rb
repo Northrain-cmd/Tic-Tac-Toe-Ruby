@@ -144,7 +144,9 @@ class GameController
     o_wins = /^(OOO)|.{3}OOO.{3}|OOO$|O..O..O|.O..O..O.|..O..O..O|O...O...O|..O.O.O../
     result = @gameboard.board.join
     @game_over = result.match?(x_wins) || result.match?(o_wins) || result.match?(/\D{9}/)
-    @gameboard.turn = 0 if result.match?(/\D{9}/)
+    if @game_over && !(result.match?(x_wins) || result.match?(o_wins))
+      @gameboard.turn = 0
+    end
   end
 
   public
