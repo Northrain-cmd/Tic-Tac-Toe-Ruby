@@ -47,10 +47,14 @@ class Gameboard
     end
   end
 
-  def ai_turn
+  def easy
     cell = rand(8)
     cell = rand(8) while place_taken?(cell)
     cell
+  end
+
+  def ai_turn
+    easy
   end
 
   def ai_mode
